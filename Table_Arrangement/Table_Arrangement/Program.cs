@@ -3,125 +3,186 @@ using System.Collections.Generic;
 
 namespace Table_Arrangement
 {
-	internal class Program
-	{
-		List<Table> liRepetedTable = new List<Table>();
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            TableArrangement tableArrangement = new TableArrangement();
 
-		static void Main(string[] args)
-		{
-			List<Table> liTables = new List<Table>
-								   {
-									   new Table()
-									   {
-										   TableName = "A",
-										   ParentName = "C",
-									   },
+            //Test case 1
+            // Cyclic parent link exception
+            List<Table> liTestCase1 = new List<Table>
+            {
+                new Table()
+                {
+                    TableName = "A",
+                    ParentName = "C",
+                },
 
-									   new Table()
-									   {
-										   TableName = "B",
-										   ParentName = "A",
-									   },
+                new Table()
+                {
+                    TableName = "B",
+                    ParentName = "A",
+                },
 
-									   new Table()
-									   {
-										   TableName = "C",
-										   ParentName = "B",
-									   },
-									   new Table()
-									   {
-										  TableName = "D",
-										  ParentName = "E",
-									   },
+                new Table()
+                {
+                    TableName = "C",
+                    ParentName = "B",
+                },
+                new Table()
+                {
+                    TableName = "D",
+                    ParentName = "E",
+                },
 
-									   new Table()
-									   {
-										   TableName = "E",
-										   ParentName = "A",
-									   }
-								   };
+                new Table()
+                {
+                    TableName = "E",
+                    ParentName = "A",
+                }
+            };
+            tableArrangement.ArrangeTables(liTestCase1);
 
-			Program program = new Program();
-			program.ArrangeTables(liTables);
+            //Test case 2
+            // Cyclic parent link exception
+            List<Table> liTestCase2 = new List<Table>
+            {
+                new Table()
+                {
+                    TableName = "A",
+                    ParentName = "C",
+                },
 
-			program.DisplaySortedTable();
+                new Table()
+                {
+                    TableName = "B",
+                    ParentName = "A",
+                },
 
+                new Table()
+                {
+                    TableName = "C",
+                    ParentName = "B",
+                },
+                new Table()
+                {
+                    TableName = "D",
+                    ParentName = "E",
+                },
 
+                new Table()
+                {
+                    TableName = "E",
+                    ParentName = "A",
+                }
+            };
+            tableArrangement.ArrangeTables(liTestCase2);
 
-			List<Table> liTablesTest2S = new List<Table>
-			                       {
-				                       new Table()
-				                       {
-					                       TableName = "A",
-					                       ParentName = "C",
-				                       },
+            //Test case 3
+            // Pass
+            List<Table> liTestData3 = new List<Table>
+            {
+                new Table()
+                {
+                    TableName = "A",
+                    ParentName = "F",
+                },
 
-				                       new Table()
-				                       {
-					                       TableName = "B",
-					                       ParentName = "A",
-				                       },
+                new Table()
+                {
+                    TableName = "B",
+                    ParentName = "C",
+                },
 
-				                       new Table()
-				                       {
-					                       TableName = "C",
-					                       ParentName = "B",
-				                       },
-				                       new Table()
-				                       {
-					                       TableName = "D",
-					                       ParentName = "E",
-				                       },
+                new Table()
+                {
+                    TableName = "C",
+                    ParentName = "D",
+                },
+                new Table()
+                {
+                    TableName = "D",
+                },
 
-				                       new Table()
-				                       {
-					                       TableName = "E",
-					                       ParentName = "A",
-				                       }
-			                       };
+                new Table()
+                {
+                    TableName = "E",
+                },
 
-			program.ArrangeTables(liTables);
+                new Table()
+                {
+                    TableName = "F",
+                },
+            };
+            tableArrangement.ArrangeTables(liTestData3);
 
-			program.DisplaySortedTable();
+            //Test case 4
+            // Cyclic parent link exception
+            List<Table> liTestData4 = new List<Table>
+            {
+                new Table()
+                {
+                    TableName = "A",
+                    ParentName = "B",
+                },
 
-			Console.ReadKey();
-		}
+                new Table()
+                {
+                    TableName = "B",
+                    ParentName = "C",
+                },
 
-		private List<Table> ArrangeTables(List<Table> liTableInput)
-		{
-			List<Table> liTable = new List<Table>(liTableInput);
+                new Table()
+                {
+                    TableName = "C",
+                    ParentName = "A",
+                },
+            };
+            tableArrangement.ArrangeTables(liTestData4);
 
-			foreach(Table table in liTable)
-			{ 
-				GetAndInsertParent(table, liTable);
-			}
+            //Test case 5
+            // Pass
+            List<Table> liTestData5 = new List<Table>
+            {
+                new Table()
+                {
+                    TableName = "A",
+                    ParentName = "B",
+                },
 
-			return liTable;
-		}
+                new Table()
+                {
+                    TableName = "B",
+                    ParentName = "C",
+                },
 
-		internal void GetAndInsertParent(Table table, List<Table> liTables)
-		{
-			if(liRepetedTable.Contains(table)) throw new Exception("cyclic parent link");
+                new Table()
+                {
+                    TableName = "C",
+                },
+            };
+            tableArrangement.ArrangeTables(liTestData5);
 
-			Table parentTable = liTables.Find(row => row.TableName == table.ParentName);
+            // Test case 6
+            // Cyclic parent link exception
+            List<Table> liTestData6 = new List<Table>
+            {
+                new Table()
+                {
+                    TableName = "A",
+                    ParentName = "B",
+                },
 
-			if(parentTable != null) GetAndInsertParent(parentTable, liTables);
+                new Table()
+                {
+                    TableName = "B",
+                    ParentName = "A",
+                },
+            };
+            tableArrangement.ArrangeTables(liTestData6);
 
-			liRepetedTable.Add(table);
-		}
-
-		internal void DisplaySortedTable()
-		{
-			foreach(Table table in liRepetedTable)
-			{
-				Console.WriteLine(table);
-			}
-		}
-	}
-
-	internal class Table
-	{
-		internal string TableName { get; set; }
-		internal string ParentName { get; set; }
-	}
+            Console.ReadKey();
+        }
+    }
 }

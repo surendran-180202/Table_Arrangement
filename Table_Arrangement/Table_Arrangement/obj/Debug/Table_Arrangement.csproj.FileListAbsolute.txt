@@ -5,3 +5,11 @@ C:\Temp\Table Arrangement\Table_Arrangement\Table_Arrangement\obj\Debug\Table_Ar
 C:\Temp\Table Arrangement\Table_Arrangement\Table_Arrangement\obj\Debug\Table_Arrangement.csproj.CoreCompileInputs.cache
 C:\Temp\Table Arrangement\Table_Arrangement\Table_Arrangement\obj\Debug\Table_Arrangement.exe
 C:\Temp\Table Arrangement\Table_Arrangement\Table_Arrangement\obj\Debug\Table_Arrangement.pdb
+E:\#Git\19_Table Arrangement\Table_Arrangement\Table_Arrangement\bin\Debug\Table_Arrangement.exe.config
+E:\#Git\19_Table Arrangement\Table_Arrangement\Table_Arrangement\bin\Debug\Table_Arrangement.exe
+E:\#Git\19_Table Arrangement\Table_Arrangement\Table_Arrangement\bin\Debug\Table_Arrangement.pdb
+E:\#Git\19_Table Arrangement\Table_Arrangement\Table_Arrangement\obj\Debug\Table_Arrangement.csproj.AssemblyReference.cache
+E:\#Git\19_Table Arrangement\Table_Arrangement\Table_Arrangement\obj\Debug\Table_Arrangement.exe.config
+E:\#Git\19_Table Arrangement\Table_Arrangement\Table_Arrangement\obj\Debug\Table_Arrangement.csproj.CoreCompileInputs.cache
+E:\#Git\19_Table Arrangement\Table_Arrangement\Table_Arrangement\obj\Debug\Table_Arrangement.exe
+E:\#Git\19_Table Arrangement\Table_Arrangement\Table_Arrangement\obj\Debug\Table_Arrangement.pdb
