@@ -5,41 +5,46 @@ namespace Table_Arrangement
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             TableArrangement tableArrangement = new TableArrangement();
 
-            //Test case 1
+            // Test case 1
             // Cyclic parent link exception
             List<Table> liTestCase1 = new List<Table>
             {
-                new Table()
+                new Table
                 {
                     TableName = "A",
-                    ParentName = "C",
+                    ParentName = new[] { "C" }
                 },
 
-                new Table()
+                new Table
                 {
                     TableName = "B",
-                    ParentName = "A",
+                    ParentName = new[] { "A" }
                 },
 
-                new Table()
+                new Table
                 {
                     TableName = "C",
-                    ParentName = "B",
+                    ParentName = new[] { "B" }
                 },
-                new Table()
+                new Table
                 {
                     TableName = "D",
-                    ParentName = "E",
+                    ParentName = new[] { "E" }
                 },
 
-                new Table()
+                new Table
                 {
                     TableName = "E",
-                    ParentName = "A",
+                    ParentName = new[] { "A" }
+                },
+
+                new Table
+                {
+                    TableName = "F"
                 }
             };
             tableArrangement.ArrangeTables(liTestCase1);
@@ -48,33 +53,33 @@ namespace Table_Arrangement
             // Cyclic parent link exception
             List<Table> liTestCase2 = new List<Table>
             {
-                new Table()
+                new Table
                 {
                     TableName = "A",
-                    ParentName = "C",
+                    ParentName = new[] { "C" }
                 },
 
-                new Table()
+                new Table
                 {
                     TableName = "B",
-                    ParentName = "A",
+                    ParentName = new[] { "A" }
                 },
 
-                new Table()
+                new Table
                 {
                     TableName = "C",
-                    ParentName = "B",
+                    ParentName = new[] { "B" }
                 },
-                new Table()
+                new Table
                 {
                     TableName = "D",
-                    ParentName = "E",
+                    ParentName = new[] { "E" }
                 },
 
-                new Table()
+                new Table
                 {
                     TableName = "E",
-                    ParentName = "A",
+                    ParentName = new[] { "A" }
                 }
             };
             tableArrangement.ArrangeTables(liTestCase2);
@@ -83,37 +88,37 @@ namespace Table_Arrangement
             // Pass
             List<Table> liTestData3 = new List<Table>
             {
-                new Table()
+                new Table
                 {
                     TableName = "A",
-                    ParentName = "F",
+                    ParentName = new[] { "F", "E" }
                 },
 
-                new Table()
+                new Table
                 {
                     TableName = "B",
-                    ParentName = "C",
+                    ParentName = new[] { "C" }
                 },
 
-                new Table()
+                new Table
                 {
                     TableName = "C",
-                    ParentName = "D",
+                    ParentName = new[] { "D" }
                 },
-                new Table()
+                new Table
                 {
-                    TableName = "D",
+                    TableName = "D"
                 },
 
-                new Table()
+                new Table
                 {
-                    TableName = "E",
+                    TableName = "E"
                 },
 
-                new Table()
+                new Table
                 {
-                    TableName = "F",
-                },
+                    TableName = "F"
+                }
             };
             tableArrangement.ArrangeTables(liTestData3);
 
@@ -121,23 +126,23 @@ namespace Table_Arrangement
             // Cyclic parent link exception
             List<Table> liTestData4 = new List<Table>
             {
-                new Table()
+                new Table
                 {
                     TableName = "A",
-                    ParentName = "B",
+                    ParentName = new[] { "B" }
                 },
 
-                new Table()
+                new Table
                 {
                     TableName = "B",
-                    ParentName = "C",
+                    ParentName = new[] { "C" }
                 },
 
-                new Table()
+                new Table
                 {
                     TableName = "C",
-                    ParentName = "A",
-                },
+                    ParentName = new[] { "A" }
+                }
             };
             tableArrangement.ArrangeTables(liTestData4);
 
@@ -145,22 +150,27 @@ namespace Table_Arrangement
             // Pass
             List<Table> liTestData5 = new List<Table>
             {
-                new Table()
+                new Table
                 {
                     TableName = "A",
-                    ParentName = "B",
+                    ParentName = new[] { "B", "D" }
                 },
 
-                new Table()
+                new Table
                 {
                     TableName = "B",
-                    ParentName = "C",
+                    ParentName = new[] { "C" }
                 },
 
-                new Table()
+                new Table
                 {
-                    TableName = "C",
+                    TableName = "C"
                 },
+
+                new Table
+                {
+                    TableName = "D"
+                }
             };
             tableArrangement.ArrangeTables(liTestData5);
 
@@ -168,19 +178,77 @@ namespace Table_Arrangement
             // Cyclic parent link exception
             List<Table> liTestData6 = new List<Table>
             {
-                new Table()
+                new Table
                 {
                     TableName = "A",
-                    ParentName = "B",
+                    ParentName = new[] { "B" }
                 },
 
-                new Table()
+                new Table
                 {
                     TableName = "B",
-                    ParentName = "A",
-                },
+                    ParentName = new[] { "A" }
+                }
             };
             tableArrangement.ArrangeTables(liTestData6);
+
+
+            // Test case 7
+            // Pass
+            List<Table> liTestData7 = new List<Table>
+            {
+                new Table
+                {
+                    TableName = "A",
+                    ParentName = new[] { "B", "C" }
+                },
+
+                new Table
+                {
+                    TableName = "B",
+                    ParentName = new[] { "C" }
+                },
+
+                new Table
+                {
+                    TableName = "C",
+                    ParentName = new[] { "D" }
+                },
+
+                new Table
+                {
+                    TableName = "D",
+                    ParentName = new[] { "H" }
+                },
+
+                new Table
+                {
+                    TableName = "E",
+                    ParentName = new[] { "F", "G" }
+                },
+
+                new Table
+                {
+                    TableName = "F",
+                    ParentName = new[] { "H", "I" }
+                },
+
+                new Table
+                {
+                    TableName = "G"
+                },
+
+                new Table
+                {
+                    TableName = "H"
+                },
+
+                new Table
+                {
+                    TableName = "I"
+                }
+            };
+            tableArrangement.ArrangeTables(liTestData7);
 
             Console.ReadKey();
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Table_Arrangement
 {
@@ -22,7 +23,7 @@ namespace Table_Arrangement
                 {
                     GetAndInsertParent(table, liTableInput);
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
                     Console.Write("cyclic parent link");
                     break;
@@ -34,16 +35,17 @@ namespace Table_Arrangement
             return OutputTable;
         }
 
-        public void GetAndInsertParent(Table table, List<Table> liTables)
+        public void GetAndInsertParent(Table table, List<Table> liTable)
         {
             if (OutputTable.Contains(table)) return;
             if (RepeatedTable.Contains(table)) throw new Exception("cyclic parent link");
             
-            Table parentTable = liTables.Find(row => row.TableName == table.ParentName);
-            if (parentTable != null)
+            Table[] parentTables = liTable.FindAll(row => table.ParentName != null && table.ParentName.Contains(row.TableName)).ToArray();
+
+            foreach (Table parentTable in parentTables)
             {
                 RepeatedTable.Add(table);
-                GetAndInsertParent(parentTable, liTables);
+                GetAndInsertParent(parentTable, liTable);
             }
 
             OutputTable.Add(table);
@@ -63,6 +65,6 @@ namespace Table_Arrangement
     public class Table
     {
         public string TableName { get; set; }
-        public string ParentName { get; set; }
+        public string[] ParentName { get; set; }
     }
 }
